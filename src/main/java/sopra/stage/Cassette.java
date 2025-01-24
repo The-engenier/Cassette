@@ -7,16 +7,16 @@ import java.util.Scanner;
 public class Cassette {
 
     //the data and table ARRAY LIST
-    static ArrayList<Integer> data = new ArrayList<>();
-    static ArrayList<List<Integer>> table = new ArrayList<java.util.List<Integer>>();
+     ArrayList<Integer> data = new ArrayList<>();
+     ArrayList<Integer> table = new ArrayList<>();
 
 
     // Cassette data will be printed
-    public static void Cassette(){
+    public Cassette(){
         readCassette();
     }
 
-    private static void readCassette() {
+    private  void readCassette() {
         File file = new File("cassette.txt");
         String line = null;
         // line 23 to 26 will get all the data from cassette.txt
@@ -38,13 +38,12 @@ public class Cassette {
                 for (int i = 0; i < count; i++) {
                     sstring = line.split(",")[i];
                     data.add(Integer.parseInt(sstring));
+                    if (data.size() < 800){
+                        data.add(Integer.valueOf(sstring));
+                        Integer.valueOf(sstring);
+                    }
 
-                    if (data.size() == 800  ){
-                        table.add(data.subList(200, data.size()));
-                        data.removeAll(data.subList(-200, data.size()));
-                        break;
-                    }
-                    }
+                }
             }
         } catch (Exception e) { // DO NOT REMOVE
             System.out.println(e.getMessage());

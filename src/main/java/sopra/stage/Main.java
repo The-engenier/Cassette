@@ -14,8 +14,6 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         Cassette cassette = new Cassette();
 
-
-
         String nombre;
         while (true) {
             System.out.println("select your list of options:");
@@ -30,7 +28,7 @@ public class Main {
             switch (nombre){
                 case ("1"):
                     System.out.println("read");
-                    Cassette.Cassette();
+
                     break;
                 case ("2"):
                     System.out.println("WRITE");
