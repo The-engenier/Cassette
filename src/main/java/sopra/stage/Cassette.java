@@ -9,7 +9,7 @@ public class Cassette {
     //the data and table ARRAY LIST
      ArrayList<Integer> data = new ArrayList<>();
      ArrayList<Integer> table = new ArrayList<>();
-
+     ArrayList<Boolean> sorter = new ArrayList<>();
 
     // Cassette data will be printed
     public Cassette(){
@@ -37,20 +37,20 @@ public class Cassette {
                 // will remove every "," in the data so it can get in the list
                 for (int i = 0; i < count; i++) {
                     sstring = line.split(",")[i];
-                    data.add(Integer.parseInt(sstring));
+                    //data.add(Integer.parseInt(sstring));
                     if (data.size() < 800){
                         data.add(Integer.valueOf(sstring));
-                        Integer.valueOf(sstring);
                     }
+                    table.add(Integer.valueOf(sstring));
 
                 }
+
+
             }
         } catch (Exception e) { // DO NOT REMOVE
             System.out.println(e.getMessage());
 
         }
-
-
 
         System.out.print("data: ");
         System.out.println(data);
@@ -63,11 +63,4 @@ public class Cassette {
     private void printCassetteData()  {
 
     }
-
 }
-
-
-    
-    
-
-
