@@ -36,3 +36,7 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+#custom
+.idea
+/src/test
