@@ -1,66 +1,100 @@
 package sopra.stage;
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
+
 
 public class Cassette {
-
     //the data and table ARRAY LIST
      ArrayList<Integer> data = new ArrayList<>();
      ArrayList<Integer> table = new ArrayList<>();
-     ArrayList<Boolean> sorter = new ArrayList<>();
+
+    int test;
 
     // Cassette data will be printed
     public Cassette(){
-        readCassette();
-    }
+        readCassette();        readCassette();
 
-    private  void readCassette() {
-        File file = new File("cassette.txt");
+        printCassetteData();
+    }
+    private void readCassette() {
+        File file = new File("/home/scooby/Documents/cassette/Cassette/src/main/resources/cassette.txt");
         String line = null;
         // line 23 to 26 will get all the data from cassette.txt
         try (Scanner allofme = new Scanner(file)) {
             while (allofme.hasNextLine()) {
                 line = allofme.nextLine();
-                System.out.println(line);
-
                 String sstring = "";
                 int count = 0;
-
                 // will count the lenght of the every line
                 for (int i = 0; i < line.length(); i++) {
                     if (line.charAt(i) == ',') {
                         count++;
                     }
                 }
-                // will remove every "," in the data so it can get in the list
+                // will remove every "," in the          data so it can get in the list
                 for (int i = 0; i < count; i++) {
                     sstring = line.split(",")[i];
-                    //data.add(Integer.parseInt(sstring));
                     if (data.size() < 800){
                         data.add(Integer.valueOf(sstring));
+                    }else{
+                        table.add(Integer.valueOf(sstring));
                     }
-                    table.add(Integer.valueOf(sstring));
-
                 }
-
-
             }
-        } catch (Exception e) { // DO NOT REMOVE
+        } catch (Exception e) { // WILL BRICK EVERYTHING IF REMOVED
             System.out.println(e.getMessage());
+        }
+    }
+    
+    public void printCassetteData()  {
+        printIdAndTaille();
+        List<String> decodedList = decode();
+        for (int i = 0; i < decodedList.size(); i++) {
+
+           // System.out.println(decodedList.subList(0,11));
+            decodedList.subList(11, 11+4);
+        }
+    }
+
+    private Map<Integer,Integer> printIdAndTaille() {
+        Map<Integer, Integer> adressCriteria = new HashMap<>();
+
+
+        int id = -1;
+        int characterCount = -1;
+        int changeid = 0;
+
+        for (int i = 0; i < table.size(); i++) {
+            if (id == 0 || characterCount == 0) {
+                break;
+            }
+            if (i % 2 == 0) {
+                id = table.get(i);
+                //System.out.println("id : "+ id);
+            } else {
+                characterCount = table.get(i);
+                //System.out.println("taille : "+characterCount);
+            }
+            adressCriteria.put(id, characterCount);
+        }
+        System.out.println(adressCriteria);
+        return adressCriteria;
+    }
+
+    private List<String> decode(){
+        ArrayList<String> decodedChars = new ArrayList<>();
+        for (Integer num : data) {
+            if(num != 0){
+                char ch = (char) num.intValue();// Convert Integer to char
+                decodedChars.add(String.valueOf(ch));
+            }
+        }
+
+
+        return decodedChars;
 
         }
 
-        System.out.print("data: ");
-        System.out.println(data);
-        System.out.println(data.size());
-        System.out.print("table: ");
-        System.out.println(table);
-        System.out.println(table.size());
-    }
-    
-    private void printCassetteData()  {
 
-    }
+
 }

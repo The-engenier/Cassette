@@ -13,10 +13,9 @@ public class Main {
     public static void main(String[] args) throws IOException {
         Scanner scanner = new Scanner(System.in);
         Cassette cassette = new Cassette();
-
         String nombre;
         while (true) {
-            System.out.println("select your list of options:");
+            System.out.println("\nselect your list of options:");
             System.out.println("1: READ");
             System.out.println("2: Write");
             System.out.println("3: Remove");
@@ -28,16 +27,24 @@ public class Main {
             switch (nombre){
                 case ("1"):
                     System.out.println("read");
-
+                    System.out.println();
                     break;
                 case ("2"):
                     System.out.println("WRITE");
+                    Scanner aa = new Scanner(System.in);
+                    String insertedInfo;
+                    System.out.print("WRITE: ");
+                    insertedInfo = aa.nextLine();
+                    char[] charArray = insertedInfo.toCharArray();
+                    for (char c : charArray) {
+                        System.out.println((int)c + " ");
+                    }
                     break;
                 case ("3"):
                     System.out.println("REMOVE");
                     break;
                 case ("4"):
-                    System.out.println("Current Version " + ANSI_RED + "ALPHA\n" + ANSI_WHITE);
+                    System.out.println("Current Version " + ANSI_RED + "AHHHH\n" + ANSI_WHITE);
                     System.out.println("\u001B[38;2;255;165;0mJAVA 17.0.14\u001B[0m");
                     System.out.println("Par Ahmed\n");
                     System.out.println("Source:");
