@@ -1,6 +1,8 @@
 package sopra.stage;
 import java.io.IOException;
 import java.util.Scanner;
+
+import com.sun.source.tree.CaseLabelTree;
 import sopra.stage.Cassette;
 
 
@@ -8,11 +10,14 @@ public class Main {
 
     public static final String ANSI_RED = "\u001B[31m";
     public static final String ANSI_WHITE = "\u001B[37m";
-    public static final String ANSI_ORANGE ="\u0001B[38,2,255,165;";
+    public static final String ANSI_ORANGE = "\u001B[38;2;255;165;0m";
+
+    public static int inputId;
 
     public static void main(String[] args) throws IOException {
         Scanner scanner = new Scanner(System.in);
         Cassette cassette = new Cassette();
+
         String nombre;
         while (true) {
             System.out.println("\nselect your list of options:");
@@ -26,26 +31,28 @@ public class Main {
             //switch case
             switch (nombre){
                 case ("1"):
-                    System.out.println("read");
+                    cassette.printCassetteData();
                     System.out.println();
                     break;
-                case ("2"):
-                    System.out.println("WRITE");
-                    Scanner aa = new Scanner(System.in);
-                    String insertedInfo;
-                    System.out.print("WRITE: ");
-                    insertedInfo = aa.nextLine();
-                    char[] charArray = insertedInfo.toCharArray();
-                    for (char c : charArray) {
-                        System.out.println((int)c + " ");
-                    }
+                case ("2"):/*
+                    System.out.print("Write your id: ");
+                    cassette.addToCassette(Integer.parseInt(scanner.nextLine()));
+                    System.out.print("Write your info: ");
+                    cassette.addData(scanner.nextLine());*/
+                    //cassette.writer();
+//                    cassette.data.set(500, 3);
+//                    System.out.println(cassette.table);
                     break;
                 case ("3"):
-                    System.out.println("REMOVE");
+                    cassette.printCassetteData();
+                    System.out.print("delete your id: ");
+                    inputId = Integer.parseInt(scanner.nextLine());
+                    cassette.remover();
+
                     break;
                 case ("4"):
-                    System.out.println("Current Version " + ANSI_RED + "AHHHH\n" + ANSI_WHITE);
-                    System.out.println("\u001B[38;2;255;165;0mJAVA 17.0.14\u001B[0m");
+                    System.out.println("Current Version " + ANSI_RED + "ALPHA\n" + ANSI_WHITE);
+                    System.out.println(ANSI_ORANGE + "JAVA 17.0.14" + ANSI_WHITE);
                     System.out.println("Par Ahmed\n");
                     System.out.println("Source:");
                     System.out.println("W3SCHOOL");
@@ -55,7 +62,9 @@ public class Main {
                 case ("5"):
                     scanner.close();
                     System.exit(0);
-
+                    break;
+                case ("21"):
+                    System.out.println("HELLO");
             }
 
         }
