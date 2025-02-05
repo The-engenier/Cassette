@@ -24,6 +24,7 @@ public class Cassette {
 
     private void readCassette() {
         File file = new File("/home/scooby/Documents/cassette/Cassette/src/main/resources/cassette.txt");
+
         String line = null;
         // line 23 to 26 will get all the data from cassette.txt
         try (Scanner allofme = new Scanner(file)) {
@@ -99,7 +100,7 @@ public class Cassette {
         //System.out.println(decodedChars);
         return decodedChars;
     }
-/**
+
     private boolean verifierId(int id){
         for(int i = 0; i < table.size(); i++){
             int c = table.get(i);
@@ -182,7 +183,6 @@ public class Cassette {
         System.out.println("added");
         System.out.println(data);
     }
-*/
     private boolean verifyId() {
         Map<Integer, Integer> idAndTailleMap = getIdAndTaille();
         Set<Integer> keys = idAndTailleMap.keySet();

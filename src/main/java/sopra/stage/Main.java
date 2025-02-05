@@ -34,14 +34,14 @@ public class Main {
                     cassette.printCassetteData();
                     System.out.println();
                     break;
-                case ("2"):/*
+                case ("2"):
                     System.out.print("Write your id: ");
                     cassette.addToCassette(Integer.parseInt(scanner.nextLine()));
                     System.out.print("Write your info: ");
-                    cassette.addData(scanner.nextLine());*/
-                    //cassette.writer();
-//                    cassette.data.set(500, 3);
-//                    System.out.println(cassette.table);
+                    cassette.addData(scanner.nextLine());
+//                  cassette.writer();
+//                  System.out.println(cassette.table);
+//                  cassette.data.set(500, 3);
                     break;
                 case ("3"):
                     cassette.printCassetteData();
